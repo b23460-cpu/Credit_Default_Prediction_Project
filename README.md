@@ -116,3 +116,7 @@ understand.md                         beginner's guide with explanatory plots
 requirements.txt                      versions it was tested with
 images/                               all figures used in the two markdown files
 ```
+
+## Credits
+
+Original analysis and notebooks: [Suhas Maddali](https://github.com/suhasmaddali). Data: Home Credit Group via Kaggle.
