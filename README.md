@@ -61,7 +61,7 @@ because the original outputs came from an out-of-order session: the saved output
 `Original dataset shape: (395864,)`, i.e. it resampled data that had *already* been resampled. A clean in-order run
 gives the right-hand numbers.
 
-## ⚠️ Caveat: why the headline score is inflated
+## Why the headline score is inflated
 
 The original code resamples the **validation** set as well as the training set
 (`X_cv, y_cv = sampler_function(X_cv_standardized, y_cv, ...)`). With SMOTE that means the model is scored mostly on
@@ -93,38 +93,6 @@ For context, top Kaggle solutions — which joined all seven Home Credit tables 
 about 0.80 AUC.
 
 ---
-
-## Run it on Google Colab (free tier)
-
-No GPU needed; the default CPU runtime (~12 GB RAM) is enough. Full *Run all*: roughly 15–25 minutes (10.5 min on a comparable 2-core machine; peak memory 5.4 GB).
-
-**Option A — upload the notebook (simplest)**
-1. Unzip the downloaded zip on your computer.
-2. Go to <https://colab.research.google.com> → **File → Upload notebook** → choose `Loan_Default_Prediction_Colab.ipynb`.
-3. **Runtime → Run all.** The first cells install `imbalanced-learn` + `missingno` and download the dataset (~190 MB, under a minute).
-
-**Option B — upload the whole zip into Colab**
-1. Open a new notebook at <https://colab.research.google.com>.
-2. Click the 📁 **Files** icon in the left sidebar → **Upload** → choose the zip.
-3. Run in a cell:
-   ```python
-   !unzip -o loan_default_colab.zip -d /content/project
-   %cd /content/project
-   ```
-4. In the Files panel, open `/content/project/Loan_Default_Prediction_Colab.ipynb` (double-click), then **Runtime → Run all**.
-
-**Option C — via Google Drive (files persist between sessions)**
-1. Upload the unzipped folder to Google Drive.
-2. Right-click `Loan_Default_Prediction_Colab.ipynb` → **Open with → Google Colaboratory** → **Run all**.
-
-**If the dataset download fails** (GitHub LFS bandwidth limits), use the Kaggle fallback written in the second code
-cell: join the competition at <https://www.kaggle.com/c/home-credit-default-risk>, create an API token
-(`kaggle.json`), upload it, and run the commented commands. You can also upload the two CSVs manually into the
-notebook's folder — the download cell skips files that are already present.
-
-**Tips**
-- Colab may disconnect after ~90 min of inactivity; keep the tab open during the Random Forest cells.
-- The row-by-row loop cell in Part 3 and the `missingno` matrix cells are slow but harmless.
 
 ## What changed vs the original code
 
